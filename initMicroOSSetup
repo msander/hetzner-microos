@@ -13,22 +13,6 @@ else
 fi
 
 : ${DOWNLOAD_BASE:="http://download.opensuse.org/distribution/leap/15.5/repo/oss/boot/x86_64/loader/"}
-DISK0SIZE=`lsblk -b --output SIZE -n -d $DISK0`
-if [ $DISK0SIZE -gt 214748364800 ] ; then #200G
-  : ${VAR_PARTITION:=1}
-  : ${SWAPSIZE:=32G}
-  : ${ROOTSIZE:=40G}
-elif [ $DISK0SIZE -gt 107374182400 ] ; then #100G
-  : ${VAR_PARTITION:=1}
-  : ${SWAPSIZE:=16G}
-  : ${ROOTSIZE:=40G}
-elif [ $DISK0SIZE -gt 53687091200 ] ; then #50G
-  : ${VAR_PARTITION:=0}
-  : ${SWAPSIZE:=8G}
-else
-  : ${VAR_PARTITION:=0}
-  : ${SWAPSIZE:=4G}
-fi
 
 echo "####################################"
 echo "# Install required packages to the #"
